@@ -73,6 +73,3 @@ function ShowInfo(text)
 	AddTextComponentSubstringPlayerName(text)
 	DrawNotification(false, false)
 end
-function DeleteE(entity)
-	Citizen.InvokeNative(0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized(entity))
-end
