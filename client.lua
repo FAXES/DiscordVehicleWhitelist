@@ -15,29 +15,25 @@ cHavePerms = false
 
 AddEventHandler('playerSpawned', function()
     local src = source
-    -- print("THIS?") -- DEBUGGING
     TriggerServerEvent("FaxDisVeh:CheckPermission", src)
 end)
 
 RegisterNetEvent("FaxDisVeh:CheckPermission:Return")
 AddEventHandler("FaxDisVeh:CheckPermission:Return", function(havePerms, error)
-    -- print("TRIGGERED") -- DEBUGGING
     if error then
         print("[FAX DISCORD VEHICLE WHITELIST ERROR] No Discord identifier was found! Permissions set to false")
     end
 
     if havePerms then
         cHavePerms = true
-        -- print("true") -- DEBUGGING
     else
         cHavePerms = false
-        -- print("false") -- DEBUGGING
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(500)
+        Citizen.Wait(400)
 
         if not cHavePerms then
             local ped = PlayerPedId()
@@ -51,13 +47,15 @@ Citizen.CreateThread(function()
             
             if veh and DoesEntityExist(veh) then
                 local model = GetEntityModel(veh)
-
-                for i = 1, #blacklistedVehicles do
-                    local restrictedVehicleModel = GetHashKey(blacklistedVehicles[i])
-                    if (model == restrictedVehicleModel) then
-                        ShowInfo("~r~Restricted Vehicle Model.")
-                        DeleteEntity(veh)
-                        ClearPedTasksImmediately(ped)
+                local driver = GetPedInVehicleSeat(veh, -1)
+		        if driver == ped then
+                    for i = 1, #blacklistedVehicles do
+                        local restrictedVehicleModel = GetHashKey(blacklistedVehicles[i])
+                        if (model == restrictedVehicleModel) then
+                            ShowInfo("~r~Restricted Vehicle Model.")
+                            DeleteEntity(veh)
+                            ClearPedTasksImmediately(ped)
+                        end
                     end
                 end
             end
@@ -72,4 +70,7 @@ function ShowInfo(text)
 	SetNotificationTextEntry("STRING")
 	AddTextComponentSubstringPlayerName(text)
 	DrawNotification(false, false)
+end
+function DeleteE(entity)
+	Citizen.InvokeNative(0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized(entity))
 end
