@@ -4,9 +4,10 @@
 
 --- Config ---
 
+-- List of vehicle classes: https://runtime.fivem.net/doc/natives/?_0x29439776AAA00A62
 blacklistedVehicles = {
-    "POLICE",
-    "POLICE2",
+    "POLICE",   -- This blacklists a vehicle model.
+    19,         -- This restricts the millitary vehicle class.
     "POLICE3",
 }
 
@@ -21,9 +22,8 @@ end)
 RegisterNetEvent("FaxDisVeh:CheckPermission:Return")
 AddEventHandler("FaxDisVeh:CheckPermission:Return", function(havePerms, error)
     if error then
-        print("[FAX DISCORD VEHICLE WHITELIST ERROR] No Discord identifier was found! Permissions set to false")
+        print("^1No Discord identifier was found! ^rPermissions set to false. See this link for a debugging process - docs.faxes.zone/docs/debugging-discord")
     end
-
     if havePerms then
         cHavePerms = true
     else
@@ -34,11 +34,9 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(400)
-
         if not cHavePerms then
             local ped = PlayerPedId()
             local veh = nil
-
             if IsPedInAnyVehicle(ped, false) then
                 veh = GetVehiclePedIsUsing(ped)
             else
@@ -50,26 +48,32 @@ Citizen.CreateThread(function()
                 local driver = GetPedInVehicleSeat(veh, -1)
 		        if driver == ped then
                     for i = 1, #blacklistedVehicles do
-                        local restrictedVehicleModel = GetHashKey(blacklistedVehicles[i])
-                        if (model == restrictedVehicleModel) then
-                            ShowInfo("~r~Restricted Vehicle Model.")
-                            DeleteEntity(veh)
-                            ClearPedTasksImmediately(ped)
+                        if type(blacklistedVehicles[i]) == "number" then
+                            if GetVehicleClass(veh) == blacklistedVehicles[i] then
+                                ShowInfo("~r~Restricted vehicle model.")
+                                DeleteEntity(veh)
+                                ClearPedTasksImmediately(ped)
+                            end
+                        elseif type(blacklistedVehicles[i]) == "string" then
+                            local restrictedVehicleModel = GetHashKey(blacklistedVehicles[i])
+                            if (model == restrictedVehicleModel) then
+                                ShowInfo("~r~Restricted vehicle model.")
+                                DeleteEntity(veh)
+                                ClearPedTasksImmediately(ped)
+                            end
                         end
                     end
                 end
             end
         end
-        -- local src = source
-        -- TriggerServerEvent("FaxDisVeh:CheckPermission", src)
     end
 end)
 
 --- Functions ---
 function ShowInfo(text)
-	SetNotificationTextEntry("STRING")
+	BeginTextCommandThefeedPost("STRING")
 	AddTextComponentSubstringPlayerName(text)
-	DrawNotification(false, false)
+	EndTextCommandThefeedPostTicker(false, false)
 end
 function DeleteE(entity)
 	Citizen.InvokeNative(0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized(entity))
