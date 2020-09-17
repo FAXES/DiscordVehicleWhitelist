@@ -2,6 +2,8 @@
 --- Discord Vehicle Whitelist, Made by FAXES ---
 ------------------------------------------------
 
+-- VIEW THE DOCS - https://docs.faxes.zone/docs/discord-vehicle-whitelist-setup
+
 --- Config ---
 
 -- List of vehicle classes: https://runtime.fivem.net/doc/natives/?_0x29439776AAA00A62
@@ -22,7 +24,7 @@ end)
 RegisterNetEvent("FaxDisVeh:CheckPermission:Return")
 AddEventHandler("FaxDisVeh:CheckPermission:Return", function(havePerms, error)
     if error then
-        print("^1No Discord identifier was found! ^rPermissions set to false. See this link for a debugging process - docs.faxes.zone/docs/debugging-discord")
+        print("^1No Discord identifier/guild was found! ^rPermissions set to false. See this link for a debugging process - docs.faxes.zone/docs/debugging-discord")
     end
     if havePerms then
         cHavePerms = true

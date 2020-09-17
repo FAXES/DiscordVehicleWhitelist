@@ -1,26 +1,23 @@
-# DiscordVehicleWhitelist
-A Discord vehicle white-list script for FiveM
-**Discord Vehicle Whitelist- By FAXES**
+### 📠 [Discord Vehicle Whitelist][5mlink] 📠
 
-## [Support Discord](https://faxes.zone/discord)
+[![Discord](https://faxes.zone/i/9wkr3.png)](https://faxes.zone/discord)
 
-**About**
-Hello all. For my 40th release here on the forums, I thought let's make it something cool(ish)? So I introduce to you a Discord (role) Vehicle Whitelist! This is a nice simple script, easy to set up (for people that can read). It allows you to guess? Make a vehicle whitelist based on a users role in Discord. This has been requested a few times so here she is, for you!
+----
 
-**Features**
-- Vehicle whitelist, based on Discord roles
-- Easy config (just read...)
-- Checks for role updates every player respawn
+This is a nice simple script, easy to set up (for people that can read). It allows you to guess? Make a vehicle whitelist based on a users role in Discord.
 
-**Requirements**
-@IllusiveTea's [Discord Role For Permission Script](https://forum.fivem.net/t/discord-roles-for-permissions-im-creative-i-know/233805) - **Ensure that it is the one from the master branch!**
+**Documentation:**
+- [FAXES Documentation Site](https://docs.faxes.zone/docs)
+- [FAXES ACE Permission Documentation](https://docs.faxes.zone/docs/aceperms)
+- [Getting Your Steam Hexadecimal](https://docs.faxes.zone/docs/getting-your-steam-hex)
 
-**Installation**
-https://docs.faxes.zone/docs/discord-vehicle-whitelist-setup/
+**Credits:**
+- FAXES
+- Astra
+- IllusiveTea
 
-<hr>
+<br />
 
-**Credits**
-@IllusiveTea for his resource
+[![FiveM](https://faxes.zone/i/r5byi.png)][5mlink]
 
-If you have any issues or comments please put them below. :newspaper:
+[5mlink]: https://forum.cfx.re/t/521569
