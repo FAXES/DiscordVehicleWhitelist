@@ -1,10 +1,10 @@
-----------------------------------------
---- Discord Whitelist, Made by FAXES ---
-----------------------------------------
+------------------------------------------------
+--- Discord Vehicle Whitelist, Made by FAXES ---
+------------------------------------------------
 
 fx_version 'bodacious'
 game 'gta5'
 author 'FAXES'
 
-server_script 'server.lua'
-client_script 'client.lua'
+server_script 'server.js'
+client_script 'client.js'
