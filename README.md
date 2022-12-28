@@ -1,3 +1,8 @@
+> IMPORTANT NOTICE: The free version of DiscordVehicleWhitelist is no longer supported or maintained. See the new version here:
+> https://weblutions.com/store/5m-discordvehwhitelist
+
+---
+
 ### 📠 [Discord Vehicle Whitelist][5mlink] 📠
 
 <a href="https://discord.gg/faxes" target="_blank">
